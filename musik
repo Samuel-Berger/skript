@@ -1,0 +1,9 @@
+#ta bort mellanslag:
+for f in *\ *; do mv "$f" "${f// /_}"; done
+#dela:		shnsplit -f Trouble.cue -o "flac flac -sV --replay-gain -8 -o %f - " Trouble.wav 
+#tagga:		cuetag Trouble.cue split-track*.flac
+#m4a -> flac:m4a -> flac:
+for f in *.m4a; do ffmpeg -i "$f" -compression_level 8 "${f%.m4a}.flac"; done
+rm *.m4a
+ls -h
+
